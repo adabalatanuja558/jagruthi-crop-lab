@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Jagruthi Agro Chemicals — interactive crop protection catalogue." />
+  <title>Jagruthi Agro Chemicals | Crop Protection Lab</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="noise"></div>
+  <main id="app">
+    <section id="intro" class="screen active">
+      <div class="intro-grid">
+        <div class="brand-lockup">
+          <div class="brand-mark">JF</div>
+          <div><strong>JAGRUTHI</strong><span>AGRO CHEMICALS</span></div>
+        </div>
+        <div class="progress"><span id="progressBar"></span></div>
+        <p class="eyebrow">FIELD ACCESS PROTOCOL · 01</p>
+        <h1>Something is<br><em>attacking the field.</em></h1>
+        <p class="lede">Three clues. One crop. Unlock the catalogue by solving the field puzzle.</p>
+        <div class="puzzle-wrap">
+          <div class="clue-card" data-clue="insect" tabindex="0">
+            <span class="clue-number">01</span><div class="clue-icon">◉</div><h3>THE CRAWLER</h3><p>Leaves are being eaten. Tiny movement. Fast spread.</p><button type="button">Choose shield</button>
+          </div>
+          <div class="clue-card" data-clue="fungus" tabindex="0">
+            <span class="clue-number">02</span><div class="clue-icon">◌</div><h3>THE STAIN</h3><p>Spots, lesions or a disease-like pattern appears.</p><button type="button">Choose shield</button>
+          </div>
+          <div class="clue-card" data-clue="weed" tabindex="0">
+            <span class="clue-number">03</span><div class="clue-icon">⌁</div><h3>THE COMPETITOR</h3><p>Unwanted plants are taking space, light and nutrients.</p><button type="button">Choose shield</button>
+          </div>
+        </div>
+        <div class="intro-footer"><span id="clueStatus">0 / 3 shields selected</span><button id="unlockBtn" class="primary" disabled type="button">Unlock Crop Lab →</button></div>
+      </div>
+    </section>
+
+    <section id="lab" class="screen">
+      <header class="topbar">
+        <div class="brand-lockup small"><div class="brand-mark">JF</div><div><strong>JAGRUTHI</strong><span>AGRO CHEMICALS</span></div></div>
+        <div class="top-actions"><button id="replayBtn" class="ghost" type="button">↻ Replay puzzle</button><button id="brochureBtn" class="ghost" type="button">View brochure</button></div>
+      </header>
+
+      <div class="hero-lab">
+        <div>
+          <p class="eyebrow">CROP PROTECTION LAB · UNLOCKED</p>
+          <h2>Find the right <em>family</em><br>for the field problem.</h2>
+          <p>Explore the products featured in the Jagruthi Agro Chemicals brochure. Filter by product class or search by name.</p>
+        </div>
+        <div class="radar">
+          <div class="radar-ring r1"></div><div class="radar-ring r2"></div><div class="radar-line"></div><span>FIELD<br>SCAN</span>
+        </div>
+      </div>
+
+      <section class="controls" aria-label="Catalogue filters">
+        <div class="searchbox"><span>⌕</span><input id="search" type="search" placeholder="Search product name…" autocomplete="off" /></div>
+        <div class="chips" id="filters">
+          <button class="chip active" data-filter="all" type="button">All <span></span></button>
+          <button class="chip" data-filter="Insecticide" type="button">Insecticides <span></span></button>
+          <button class="chip" data-filter="Fungicide" type="button">Fungicides <span></span></button>
+          <button class="chip" data-filter="Herbicide" type="button">Herbicides <span></span></button>
+          <button class="chip" data-filter="Other" type="button">Other <span></span></button>
+        </div>
+      </section>
+
+      <div class="catalogue-meta"><span id="resultCount"></span><span>Tap a product to inspect its brochure page.</span></div>
+      <section id="products" class="product-grid" aria-live="polite"></section>
+      <div id="empty" class="empty" hidden><strong>No match found.</strong><span>Try another product name or remove the filter.</span></div>
+
+      <section class="brochure-strip">
+        <div><p class="eyebrow">ORIGINAL SOURCE</p><h3>Flip through the brochure</h3><p>Every catalogue page is preserved below as supplied.</p></div>
+        <button id="openGallery" class="primary" type="button">Open 12-page gallery →</button>
+      </section>
+    </section>
+  </main>
+
+  <dialog id="productDialog" class="modal"><button class="close" id="closeProduct" type="button" aria-label="Close">×</button><div id="productDetail"></div></dialog>
+  <dialog id="galleryDialog" class="modal gallery-modal"><button class="close" id="closeGallery" type="button" aria-label="Close">×</button><div class="gallery-head"><p class="eyebrow">ORIGINAL BROCHURE</p><h2>12 pages · one field story</h2></div><div id="gallery" class="gallery"></div></dialog>
+  <script src="app.js"></script>
+</body>
+</html>
